@@ -1,0 +1,1 @@
+zabbix ALL=(ALL) NOPASSWD: /usr/local/bin/bacula_check_job, /usr/local/bin/bacula_discovery

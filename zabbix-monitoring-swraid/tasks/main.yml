@@ -1,0 +1,9 @@
+- name: Configure zabbix-agent swraid monitoring
+  copy:
+      src: raid.conf
+      dest: /etc/zabbix/zabbix_agentd.conf.d/
+      owner: zabbix
+      group: zabbix
+      mode: "u=rwx,g=rx,o=rx"
+  notify:
+      - restart zabbix-agent

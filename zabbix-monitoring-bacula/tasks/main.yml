@@ -1,0 +1,25 @@
+---
+- name: Configure Bacula Director Monitoring Install Scripts 1
+  copy:
+    src: bacula_check_job
+    dest: /usr/local/bin/
+    mode: '+x'
+
+- name: Configure Bacula Director Monitoring Install Scripts 2
+  copy:
+    src: bacula_discovery
+    dest: /usr/local/bin/
+    mode: '+x'
+
+- name: Configure OpenVPN Monitoring Configure SUDO
+  copy:
+    src: zabbix_monitoring_bacula_director
+    dest: /etc/sudoers.d/zabbix_monitoring_bacula_director
+    mode: 0440
+
+- name: Configure Bacula Director Monitoring Configure Zabbix Agent
+  copy:
+    src: bacula.conf
+    dest: /etc/zabbix/zabbix_agentd.conf.d/
+  notify:
+    - restart zabbix-agent
